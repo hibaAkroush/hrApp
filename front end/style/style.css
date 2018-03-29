@@ -78,4 +78,12 @@ input.ng-invalid.ng-touched{
 
 h5 {
      color: #ff6600; transition: .5s; -moz-transition: .5s; -webkit-transition: .5s; -o-transition: .5s; font-family: 'Muli', sans-serif;
-     }
+}
+
+#department{
+    background-color: #ff6600;
+}
+
+#employees{
+    background-color: #ff6600;
+}

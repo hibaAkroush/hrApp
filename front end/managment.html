@@ -1,77 +1,34 @@
-<br>
-<br>
-  
-<center ng-init="showFilter=false; newEntity=false; cope.checked=false; managment.selectedMan=false">
-    <button ng-click='newEntity=!newEntity; click.newUpdateMan=false'>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      Add
-    </button>
+<div ng-controller="departmentCtrl">
+  <div id="department" >
+    <center>
+      <md-button ng-click="addDepartment()" class="md-raised">
+        <i class="fa fa-plus" aria-hidden="true"></i> 
+        Add
+      </md-button>
 
-    <button ng-click= "showDeleteToastMan()">
-        <i class="fa fa-trash-o fa-lg"></i>
-    Delete
-    </button>
+      <md-button ng-click="updateDepartment()" ng-disabled="selectedDepartment === null" class="md-raised">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        Edit
+      </md-button>
 
-    <button ng-click="click.newUpdateMan = !click.newUpdateMan; updatToastMan(); newEntity=false">
-        <i class="fa fa-refresh" aria-hidden="true"></i>
-    Update</button>
-</center>
+      <md-button ng-click= "deleteDepartment()" ng-disabled="selectedDepartment === null" class="md-raised">
+      <i class="fa fa-trash-o fa-lg"></i>
+        Delete
+      </md-button>
 
-<form name="addManForm" novalidate>
+      <md-button ng-click="cancelDepartment()" class="md-raised" ng-disabled="noChangesMade">
+      <i class="fa fa-trash-o fa-lg"></i>
+        Cancle
+      </md-button>
 
-    <div ng-show="newEntity">
-        
-        <p ng-show="addManForm.name.$invalid && !addManForm.name.$pristine" style="color: red">Enter a valid name.</p>
-        <p ng-show="addManForm.head.$invalid && !addManForm.head.$pristine" style="color: red">Enter a valid name.</p>
-        <tr></tr>
-        <td><h5>Add</h5></td>
-        <td>
-            <button  ng-click="addDep(departmentAdd); newEntity=false">save</button>
-        </td>
-        <td>
-            <input  class="k-textbox" ng-model="departmentAdd.name" type="text" ng-required="true" ng-minlength="3" ng-maxlength="8" name="name">
-        </td>
-        <td>
-            <input  class="k-textbox" ng-model="departmentAdd.head" type="number" ng-required="true" name="head">
-        </td>
-    </div> 
-</form>
+      <md-button ng-click="saveDepartment()" class="md-raised" 
+      ng-disabled="!madeChangesToBeUpdated">
+      <i class="fa fa-trash-o fa-lg"></i>
+        Save
+      </md-button>
+    </center>
+  </div>
 
-<form name="updateManForm" novalidate>
-    <div ng-show=" managment.selectedMan && click.newUpdateMan">
-        <td><h5>Update</h5></td>
-
-        <p ng-show="updateManForm.name.$invalid && !updateManForm.name.$pristine" 
-        style="color: red">Enter a valid name.
-        </p>
-
-        <p ng-show="updateManForm.head.$invalid && !updateManForm.head.$pristine" 
-        style="color: red">Enter a valid name.
-        </p>
-
-        <td>
-            <button ng-disabled="updateManForm.$invalid" ng-click = "updateMan(depa)">Update</button>
-        </td>
-
-        <td>
-            <input kendo-numerictextbox ng-model="depa.id" type="number"  min="0" ng-required="true">
-        </td>
-
-        <td>
-            <input  class="k-textbox" ng-model="depa.name" type="text" ng-required="true" ng-minlength="3" name="name" ng-maxlength="8">
-        </td>
-
-        <td>
-            <input  type="number" ng-model="depa.head" ng-required="true" name="head">
-        </td>
-        
-    </div>
-</form>
-
-<kendo-grid 
-k-options="gridOptionsMan"
-k-selectable = "true"
-k-on-change="onChangeMan(data)">
-</kendo-grid>
-
+  <kendo-grid k-options="gridOptionsMan" id="dep-grid"></kendo-grid>
+</div>
 
