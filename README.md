@@ -1,7 +1,8 @@
 # hrApp
 
 this is a simple Human resourses app 
-the user can do CRUD operation on employees and departments 
+the user can do CRUD operation on employees and departments
+each department has many employees and has an employee who happens to be the head of that department 
 
 I have used angular js for front end 
 
